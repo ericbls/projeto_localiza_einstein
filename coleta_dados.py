@@ -14,12 +14,20 @@ arquivow = open('/home/ericlee/Downloads/banco_dados_dicionario','w')
 
 local = raw_input('Insira o nome do local medido: ')
 
-while (local in dicionario):
-    local = raw_input('Este local ja foi inserido: ')
-
-dicionario[local]=dict()
-for i in cell:
-    dicionario[local][i['mac']] = int(i['db'])
+if local in dicionario:
+    
+    for i in cell:
+        if i['mac'] in dicionario[local]:
+            dicionario[local][i['mac']].append(int(i['db']))
+            
+        else:
+            dicionario[local][i['mac']] = [int(i['db'])]
+    
+else:
+    dicionario[local]=dict()
+    
+    for i in cell:
+        dicionario[local][i['mac']] = [int(i['db'])]
 
 salvar = json.dumps(dicionario)
 
