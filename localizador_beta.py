@@ -64,6 +64,7 @@ while (x == 1):
     for (local, pts) in zip(mais_provavel_local,mais_provavel_pts):
         print ('local {0}: pts {1}'.format(local,pts))
 
-    sleep(2)
+    x = int(raw_input('Continuar: '))
 
 arquivo.close()
+
